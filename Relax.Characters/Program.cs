@@ -1,20 +1,24 @@
-var builder = WebApplication.CreateBuilder(args);
+using Kalantyr.Web;
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+namespace Relax.Characters
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            RunWrapper.LogIfException(() =>
+            {
+                CreateHostBuilder(args).Build().Run();
+            });
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder
+                        .UseIISIntegration()
+                        .UseStartup<Startup>();
+                });
+    }
 }
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();

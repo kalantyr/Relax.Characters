@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{8CE7E779-2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalantyr.Web", "Kalantyr.Libs\Kalantyr.Web\Kalantyr.Web.csproj", "{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Characters.Client", "Relax.Characters.Client\Relax.Characters.Client.csproj", "{83F2044E-D2D6-45F0-AF26-BFF1F79A84C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Characters.Models", "Relax.Characters.Models\Relax.Characters.Models.csproj", "{64948DB6-8CB4-4047-B346-A5163612436A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,14 @@ Global
 		{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83F2044E-D2D6-45F0-AF26-BFF1F79A84C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83F2044E-D2D6-45F0-AF26-BFF1F79A84C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83F2044E-D2D6-45F0-AF26-BFF1F79A84C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83F2044E-D2D6-45F0-AF26-BFF1F79A84C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64948DB6-8CB4-4047-B346-A5163612436A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64948DB6-8CB4-4047-B346-A5163612436A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64948DB6-8CB4-4047-B346-A5163612436A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64948DB6-8CB4-4047-B346-A5163612436A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

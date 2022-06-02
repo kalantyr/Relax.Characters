@@ -1,3 +1,7 @@
 /Relax.Characters/bin
 /Relax.Characters/obj
 /.vs
+/Relax.Characters.Models/bin
+/Relax.Characters.Models/obj
+/Relax.Characters.Client/bin
+/Relax.Characters.Client/obj

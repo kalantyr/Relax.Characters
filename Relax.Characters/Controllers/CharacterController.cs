@@ -1,5 +1,6 @@
 ﻿using Kalantyr.Web;
 using Microsoft.AspNetCore.Mvc;
+using Relax.Characters.Services;
 
 namespace Relax.Characters.Controllers
 {
@@ -7,12 +8,27 @@ namespace Relax.Characters.Controllers
     [Route("[controller]")]
     public class CharacterController: ControllerBase
     {
-        [HttpGet]
-        [Route("allCharacters")]
-        public async Task<IActionResult> GetAllCharactersAsync(CancellationToken cancellationToken)
+        private readonly ICharacterService _characterService;
+
+        public CharacterController(ICharacterService characterService)
         {
-            var userToken = Request.GetAuthToken();
-            throw new NotImplementedException();
+            _characterService = characterService ?? throw new ArgumentNullException(nameof(characterService));
+        }
+
+        [HttpGet]
+        [Route("info")]
+        public async Task<IActionResult> GetCharacterInfoAsync(uint id, CancellationToken cancellationToken)
+        {
+            var result = await _characterService.GetCharacterInfoAsync(Request.GetAuthToken(), id, cancellationToken);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("allCharactersIds")]
+        public async Task<IActionResult> GetAllCharactersIdsAsync(CancellationToken cancellationToken)
+        {
+            var result = await _characterService.GetAllCharactersIdsAsync(Request.GetAuthToken(), cancellationToken);
+            return Ok(result);
         }
     }
 }
