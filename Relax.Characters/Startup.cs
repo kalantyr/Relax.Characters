@@ -1,6 +1,9 @@
 ﻿using Kalantyr.Auth.Client;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using Relax.Characters.Config;
+using Relax.Characters.DbRepositories;
+using Relax.Characters.InternalModels;
 using Relax.Characters.Services;
 using Relax.Characters.Services.Impl;
 
@@ -23,11 +26,17 @@ namespace Relax.Characters
                 sp.GetService<IHttpClientFactory>(),
                 sp.GetService<IOptions<AuthConfig>>().Value.AppKey));
             services.AddScoped<ICharacterService, CharacterService>();
+            services.AddScoped<ICreateCharacterValidator, CreateCharacterValidator>();
+            services.AddScoped<ICharactersStorage, CharactersStorage>();
+            services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<ICharactersStorageAdmin, CharactersStorage>();
 
             services.AddHttpClient<AuthClient>((sp, client) =>
             {
                 client.BaseAddress = new Uri(sp.GetService<IOptions<AuthConfig>>().Value.ServiceUrl);
             });
+
+            services.AddScoped<IHealthCheck, CharacterService>();
 
             services.AddSwaggerDocument();
 

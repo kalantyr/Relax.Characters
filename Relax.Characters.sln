@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalantyr.Web", "..\Kalantyr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Characters.Tests", "Relax.Characters.Tests\Relax.Characters.Tests.csproj", "{3EEC6E41-5A6D-4DEE-A6CD-52CD1BE73635}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Characters.DbRepositories", "Relax.Characters.DbRepositories\Relax.Characters.DbRepositories.csproj", "{6E996BDB-0B6D-4313-A50C-90EC55A59472}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Characters.InternalModels", "Relax.Characters.InternalModels\Relax.Characters.InternalModels.csproj", "{EBA7F4F6-4418-486A-865B-AA3016D1CE0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,14 @@ Global
 		{3EEC6E41-5A6D-4DEE-A6CD-52CD1BE73635}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EEC6E41-5A6D-4DEE-A6CD-52CD1BE73635}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EEC6E41-5A6D-4DEE-A6CD-52CD1BE73635}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E996BDB-0B6D-4313-A50C-90EC55A59472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E996BDB-0B6D-4313-A50C-90EC55A59472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E996BDB-0B6D-4313-A50C-90EC55A59472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E996BDB-0B6D-4313-A50C-90EC55A59472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBA7F4F6-4418-486A-865B-AA3016D1CE0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBA7F4F6-4418-486A-865B-AA3016D1CE0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBA7F4F6-4418-486A-865B-AA3016D1CE0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBA7F4F6-4418-486A-865B-AA3016D1CE0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

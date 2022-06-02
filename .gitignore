@@ -8,3 +8,7 @@
 /Relax.Characters.Tests/bin
 /Relax.Characters.Tests/obj
 /*.user
+/Relax.Characters.DbRepositories/bin
+/Relax.Characters.DbRepositories/obj
+/Relax.Characters.InternalModels/bin
+/Relax.Characters.InternalModels/obj

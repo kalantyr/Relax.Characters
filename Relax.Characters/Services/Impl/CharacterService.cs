@@ -1,16 +1,22 @@
 ﻿using Kalantyr.Auth.Client;
 using Kalantyr.Web;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Relax.Characters.InternalModels;
 using Relax.Characters.Models;
 
 namespace Relax.Characters.Services.Impl
 {
-    public class CharacterService: ICharacterService
+    public class CharacterService: ICharacterService, IHealthCheck
     {
         private readonly IAppAuthClient _authClient;
+        private readonly ICharactersStorage _charactersStorage;
+        private readonly ICreateCharacterValidator _createCharacterValidator;
 
-        public CharacterService(IAppAuthClient authClient)
+        public CharacterService(IAppAuthClient authClient, ICharactersStorage charactersStorage, ICreateCharacterValidator createCharacterValidator)
         {
             _authClient = authClient ?? throw new ArgumentNullException(nameof(authClient));
+            _charactersStorage = charactersStorage ?? throw new ArgumentNullException(nameof(charactersStorage));
+            _createCharacterValidator = createCharacterValidator ?? throw new ArgumentNullException(nameof(createCharacterValidator));
         }
 
         public Task<ResultDto<IReadOnlyCollection<uint>>> GetMyCharactersIdsAsync(string token, CancellationToken cancellationToken)
@@ -38,7 +44,41 @@ namespace Relax.Characters.Services.Impl
             if (getUserIdResult.Error != null)
                 return new ResultDto<uint> { Error = getUserIdResult.Error };
 
-            throw new NotImplementedException();
+            cancellationToken.ThrowIfCancellationRequested();
+
+            var validationResult = await _createCharacterValidator.CanCreateAsync(info, cancellationToken);
+            if (validationResult.Error != null)
+                return new ResultDto<uint> { Error = validationResult.Error };
+
+            cancellationToken.ThrowIfCancellationRequested();
+
+            var record = new CharacterRecord
+            {
+                UserId = getUserIdResult.Result,
+                Name = info.Name,
+                Level = 1
+            };
+            var newId = await _charactersStorage.AddAsync(record, cancellationToken);
+            return new ResultDto<uint> { Result = newId };
+        }
+
+        public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = new())
+        {
+            if (_authClient is IHealthCheck hc1)
+            {
+                var result = await hc1.CheckHealthAsync(context, cancellationToken);
+                if (result.Status != HealthStatus.Healthy)
+                    return result;
+            }
+
+            if (_charactersStorage is IHealthCheck hc2)
+            {
+                var result = await hc2.CheckHealthAsync(context, cancellationToken);
+                if (result.Status != HealthStatus.Healthy)
+                    return result;
+            }
+
+            return HealthCheckResult.Healthy();
         }
     }
 }
