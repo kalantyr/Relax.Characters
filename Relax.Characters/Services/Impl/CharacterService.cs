@@ -9,22 +9,19 @@ namespace Relax.Characters.Services.Impl
         {
             var result = new ResultDto<IReadOnlyCollection<uint>>
             {
-                Result = new [] { 123u }
+                Result = new [] { 123u, 321u }
             };
             return Task.FromResult(result);
         }
 
         public Task<ResultDto<CharacterInfo>> GetCharacterInfoAsync(string token, uint characterId, CancellationToken cancellationToken)
         {
-            var result = new ResultDto<CharacterInfo>
+            var characterInfo = new CharacterInfo
             {
-                Result = new CharacterInfo
-                {
-                    Id = 123,
-                    Name = "Адам"
-                }
+                Id = characterId,
+                Name = characterId == 123 ? "Адам" : "Ева"
             };
-            return Task.FromResult(result);
+            return Task.FromResult(new ResultDto<CharacterInfo> { Result = characterInfo });
         }
     }
 }
