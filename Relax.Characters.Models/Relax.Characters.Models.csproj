@@ -6,4 +6,8 @@
 	  <Authors>$(Authors)</Authors>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Kalantyr.Auth\Kalantyr.Libs\Kalantyr.Web\Kalantyr.Web.csproj" />
+  </ItemGroup>
+
 </Project>

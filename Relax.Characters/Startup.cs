@@ -21,6 +21,7 @@ namespace Relax.Characters
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<AuthConfig>(_configuration.GetSection("AuthService"));
+            services.Configure<ServiceConfig>(_configuration.GetSection("Service"));
 
             services.AddSingleton<IAppAuthClient>(sp => new AuthClient(
                 sp.GetService<IHttpClientFactory>(),
@@ -30,6 +31,7 @@ namespace Relax.Characters
             services.AddScoped<ICharactersStorage, CharactersStorage>();
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<ICharactersStorageAdmin, CharactersStorage>();
+            services.AddScoped<IPermissionValidator, PermissionValidator>();
 
             services.AddHttpClient<AuthClient>((sp, client) =>
             {
