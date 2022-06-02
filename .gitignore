@@ -5,3 +5,6 @@
 /Relax.Characters.Models/obj
 /Relax.Characters.Client/bin
 /Relax.Characters.Client/obj
+/Relax.Characters.Tests/bin
+/Relax.Characters.Tests/obj
+/*.user

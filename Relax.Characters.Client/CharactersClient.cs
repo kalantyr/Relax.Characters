@@ -23,10 +23,16 @@ namespace Relax.Characters.Client
             return await Get<ResultDto<CharacterInfo>>("/character/info?id=" + characterId, cancellationToken);
         }
 
-        public async Task<ResultDto<IReadOnlyCollection<uint>>> GetAllCharactersIdsAsync(string userToken, CancellationToken cancellationToken)
+        public async Task<ResultDto<IReadOnlyCollection<uint>>> GetMyCharactersIdsAsync(string userToken, CancellationToken cancellationToken)
         {
             _tokenRequestEnricher.Token = userToken;
-            return await Get<ResultDto<IReadOnlyCollection<uint>>>("/character/allCharactersIds", cancellationToken);
+            return await Get<ResultDto<IReadOnlyCollection<uint>>>("/character/myCharactersIds", cancellationToken);
+        }
+
+        public async Task<ResultDto<uint>> CreateAsync(CharacterInfo info, string userToken, CancellationToken cancellationToken)
+        {
+            _tokenRequestEnricher.Token = userToken;
+            return await Post<ResultDto<uint>>("/character/create", Serialize(info), cancellationToken);
         }
     }
 }

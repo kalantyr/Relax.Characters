@@ -10,10 +10,11 @@ namespace Relax.Characters.Client
     {
         Task<ResultDto<CharacterInfo>> GetCharacterInfoAsync(uint characterId, string userToken, CancellationToken cancellationToken);
 
-        Task<ResultDto<IReadOnlyCollection<uint>>> GetAllCharactersIdsAsync(string userToken, CancellationToken cancellationToken);
+        Task<ResultDto<IReadOnlyCollection<uint>>> GetMyCharactersIdsAsync(string userToken, CancellationToken cancellationToken);
     }
 
     public interface ICharactersClient: ICharactersReadonlyClient
     {
+        Task<ResultDto<uint>> CreateAsync(CharacterInfo info, string userToken, CancellationToken cancellationToken);
     }
 }

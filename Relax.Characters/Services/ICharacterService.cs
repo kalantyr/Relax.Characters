@@ -5,8 +5,10 @@ namespace Relax.Characters.Services
 {
     public interface ICharacterService
     {
-        Task<ResultDto<IReadOnlyCollection<uint>>> GetAllCharactersIdsAsync(string token, CancellationToken cancellationToken);
+        Task<ResultDto<IReadOnlyCollection<uint>>> GetMyCharactersIdsAsync(string token, CancellationToken cancellationToken);
 
-        Task<ResultDto<CharacterInfo>> GetCharacterInfoAsync(string token, uint characterId, CancellationToken cancellationToken);
+        Task<ResultDto<CharacterInfo>> GetCharacterInfoAsync(uint characterId, string token, CancellationToken cancellationToken);
+        
+        Task<ResultDto<uint>> CreateCharacterAsync(CharacterInfo info, string token, CancellationToken cancellationToken);
     }
 }

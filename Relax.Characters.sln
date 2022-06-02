@@ -7,11 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relax.Characters", "Relax.C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{8CE7E779-2DC6-4E9C-B254-2A494E22C5AA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalantyr.Web", "Kalantyr.Libs\Kalantyr.Web\Kalantyr.Web.csproj", "{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relax.Characters.Client", "Relax.Characters.Client\Relax.Characters.Client.csproj", "{83F2044E-D2D6-45F0-AF26-BFF1F79A84C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Characters.Client", "Relax.Characters.Client\Relax.Characters.Client.csproj", "{83F2044E-D2D6-45F0-AF26-BFF1F79A84C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relax.Characters.Models", "Relax.Characters.Models\Relax.Characters.Models.csproj", "{64948DB6-8CB4-4047-B346-A5163612436A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Characters.Models", "Relax.Characters.Models\Relax.Characters.Models.csproj", "{64948DB6-8CB4-4047-B346-A5163612436A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalantyr.Auth.Client", "..\Kalantyr.Auth\Kalantyr.Auth.Client\Kalantyr.Auth.Client.csproj", "{E88EDDB0-D460-406C-9455-C6DCE69D5B70}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalantyr.Web", "..\Kalantyr.Auth\Kalantyr.Libs\Kalantyr.Web\Kalantyr.Web.csproj", "{2E50D1E9-660D-4F4C-8AE0-EBF2355F0714}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Relax.Characters.Tests", "Relax.Characters.Tests\Relax.Characters.Tests.csproj", "{3EEC6E41-5A6D-4DEE-A6CD-52CD1BE73635}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +27,6 @@ Global
 		{81CECCE6-7BA7-4F0C-ABA1-4FDB68C4F3EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81CECCE6-7BA7-4F0C-ABA1-4FDB68C4F3EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81CECCE6-7BA7-4F0C-ABA1-4FDB68C4F3EB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{83F2044E-D2D6-45F0-AF26-BFF1F79A84C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{83F2044E-D2D6-45F0-AF26-BFF1F79A84C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83F2044E-D2D6-45F0-AF26-BFF1F79A84C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,12 +35,25 @@ Global
 		{64948DB6-8CB4-4047-B346-A5163612436A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64948DB6-8CB4-4047-B346-A5163612436A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64948DB6-8CB4-4047-B346-A5163612436A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E88EDDB0-D460-406C-9455-C6DCE69D5B70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E88EDDB0-D460-406C-9455-C6DCE69D5B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E88EDDB0-D460-406C-9455-C6DCE69D5B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E88EDDB0-D460-406C-9455-C6DCE69D5B70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E50D1E9-660D-4F4C-8AE0-EBF2355F0714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E50D1E9-660D-4F4C-8AE0-EBF2355F0714}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E50D1E9-660D-4F4C-8AE0-EBF2355F0714}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E50D1E9-660D-4F4C-8AE0-EBF2355F0714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EEC6E41-5A6D-4DEE-A6CD-52CD1BE73635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EEC6E41-5A6D-4DEE-A6CD-52CD1BE73635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EEC6E41-5A6D-4DEE-A6CD-52CD1BE73635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EEC6E41-5A6D-4DEE-A6CD-52CD1BE73635}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1} = {8CE7E779-2DC6-4E9C-B254-2A494E22C5AA}
+		{E88EDDB0-D460-406C-9455-C6DCE69D5B70} = {8CE7E779-2DC6-4E9C-B254-2A494E22C5AA}
+		{2E50D1E9-660D-4F4C-8AE0-EBF2355F0714} = {8CE7E779-2DC6-4E9C-B254-2A494E22C5AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DB7D233F-32BB-4504-AD92-19DCEB286833}

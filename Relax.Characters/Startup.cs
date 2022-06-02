@@ -1,4 +1,7 @@
-﻿using Relax.Characters.Services;
+﻿using Kalantyr.Auth.Client;
+using Microsoft.Extensions.Options;
+using Relax.Characters.Config;
+using Relax.Characters.Services;
 using Relax.Characters.Services.Impl;
 
 namespace Relax.Characters
@@ -14,7 +17,17 @@ namespace Relax.Characters
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<AuthConfig>(_configuration.GetSection("AuthService"));
+
+            services.AddSingleton<IAppAuthClient>(sp => new AuthClient(
+                sp.GetService<IHttpClientFactory>(),
+                sp.GetService<IOptions<AuthConfig>>().Value.AppKey));
             services.AddScoped<ICharacterService, CharacterService>();
+
+            services.AddHttpClient<AuthClient>((sp, client) =>
+            {
+                client.BaseAddress = new Uri(sp.GetService<IOptions<AuthConfig>>().Value.ServiceUrl);
+            });
 
             services.AddSwaggerDocument();
 
