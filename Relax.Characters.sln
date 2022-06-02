@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relax.Characters", "Relax.Characters\Relax.Characters.csproj", "{81CECCE6-7BA7-4F0C-ABA1-4FDB68C4F3EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{8CE7E779-2DC6-4E9C-B254-2A494E22C5AA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kalantyr.Web", "Kalantyr.Libs\Kalantyr.Web\Kalantyr.Web.csproj", "{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81CECCE6-7BA7-4F0C-ABA1-4FDB68C4F3EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81CECCE6-7BA7-4F0C-ABA1-4FDB68C4F3EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81CECCE6-7BA7-4F0C-ABA1-4FDB68C4F3EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81CECCE6-7BA7-4F0C-ABA1-4FDB68C4F3EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{79EAEBC7-9B2B-4C0E-9035-43745CBF66E1} = {8CE7E779-2DC6-4E9C-B254-2A494E22C5AA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB7D233F-32BB-4504-AD92-19DCEB286833}
+	EndGlobalSection
+EndGlobal
