@@ -8,10 +8,12 @@ namespace Relax.Characters.Services.Impl
 {
     public class CharacterService: ICharacterService, IHealthCheck
     {
+        private static readonly ResultDto<CharacterInfo> CharacterNotFound = new() { Error = Errors.CharacterNotFound };
+
         private readonly IAppAuthClient _authClient;
         private readonly ICharactersStorage _charactersStorage;
         private readonly ICreateCharacterValidator _createCharacterValidator;
-
+        
         public CharacterService(IAppAuthClient authClient, ICharactersStorage charactersStorage, ICreateCharacterValidator createCharacterValidator)
         {
             _authClient = authClient ?? throw new ArgumentNullException(nameof(authClient));
@@ -19,23 +21,34 @@ namespace Relax.Characters.Services.Impl
             _createCharacterValidator = createCharacterValidator ?? throw new ArgumentNullException(nameof(createCharacterValidator));
         }
 
-        public Task<ResultDto<IReadOnlyCollection<uint>>> GetMyCharactersIdsAsync(string token, CancellationToken cancellationToken)
+        public async Task<ResultDto<IReadOnlyCollection<uint>>> GetMyCharactersIdsAsync(string token, CancellationToken cancellationToken)
         {
-            var result = new ResultDto<IReadOnlyCollection<uint>>
+            var getUserIdResult = await _authClient.GetUserIdAsync(token, cancellationToken);
+            if (getUserIdResult.Error != null)
+                return new ResultDto<IReadOnlyCollection<uint>> { Error = getUserIdResult.Error };
+
+            cancellationToken.ThrowIfCancellationRequested();
+
+            var records = await _charactersStorage.GetByUserIdAsync(getUserIdResult.Result, cancellationToken);
+            return new ResultDto<IReadOnlyCollection<uint>>
             {
-                Result = new [] { 123u, 321u }
+                Result = records.Select(r => r.Id).ToArray()
             };
-            return Task.FromResult(result);
         }
 
-        public Task<ResultDto<CharacterInfo>> GetCharacterInfoAsync(uint characterId, string token, CancellationToken cancellationToken)
+        public async Task<ResultDto<CharacterInfo>> GetCharacterInfoAsync(uint characterId, string token, CancellationToken cancellationToken)
         {
+            var record = await _charactersStorage.GetByIdAsync(characterId, cancellationToken);
+            if (record == null)
+                return CharacterNotFound;
+
             var characterInfo = new CharacterInfo
             {
                 Id = characterId,
-                Name = characterId == 123 ? "Адам" : "Ева"
+                Name = record.Name,
+                Level = record.Level
             };
-            return Task.FromResult(new ResultDto<CharacterInfo> { Result = characterInfo });
+            return new ResultDto<CharacterInfo> { Result = characterInfo };
         }
 
         public async Task<ResultDto<uint>> CreateCharacterAsync(CharacterInfo info, string token, CancellationToken cancellationToken)

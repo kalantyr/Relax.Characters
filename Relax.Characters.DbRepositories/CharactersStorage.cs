@@ -49,5 +49,37 @@ namespace Relax.Characters.DbRepositories
             await using var ctx = new CharacterDbContext(_connectionString);
             await ctx.Database.MigrateAsync(cancellationToken);
         }
+
+        public async Task<IReadOnlyCollection<CharacterRecord>> GetByUserIdAsync(uint userId, CancellationToken cancellationToken)
+        {
+            await using var ctx = new CharacterDbContext(_connectionString);
+            var records = await ctx.Characters
+                .AsNoTracking()
+                .Where(ch => ch.UserId == userId)
+                .ToArrayAsync(cancellationToken);
+            return records
+                .Select(Map)
+                .ToArray();
+        }
+
+        public async Task<CharacterRecord> GetByIdAsync(uint characterId, CancellationToken cancellationToken)
+        {
+            await using var ctx = new CharacterDbContext(_connectionString);
+            var record = await ctx.Characters
+                .AsNoTracking()
+                .FirstOrDefaultAsync(ch => ch.Id == characterId, cancellationToken);
+            return record == null ? null : Map(record);
+        }
+
+        private static CharacterRecord Map(Character r)
+        {
+            return new CharacterRecord
+            {
+                Id = r.Id,
+                Level = r.Level,
+                Name = r.Name,
+                UserId = r.UserId
+            };
+        }
     }
 }

@@ -45,5 +45,13 @@ namespace Relax.Characters.Tests
             result = await service.CreateCharacterAsync(new CharacterInfo(), "222", CancellationToken.None);
             Assert.AreEqual("ValidationError", result.Error.Code);
         }
+
+        [Test]
+        public async Task GetCharacterInfo_Test()
+        {
+            var service = new CharacterService(_authClient.Object, _characterRepository.Object, _createValidator.Object);
+            var result = await service.GetCharacterInfoAsync(123, "111", CancellationToken.None);
+            Assert.AreEqual(Errors.CharacterNotFound.Code, result.Error.Code);
+        }
     }
 }

@@ -9,5 +9,11 @@ namespace Relax.Characters.Models
             Code = nameof(AdminOnlyAccess),
             Message = "This action can only be performed by an administrator"
         };
+
+        public static Error CharacterNotFound { get; } = new()
+        {
+            Code = nameof(CharacterNotFound),
+            Message = "Персонаж не найден"
+        };
     }
 }
