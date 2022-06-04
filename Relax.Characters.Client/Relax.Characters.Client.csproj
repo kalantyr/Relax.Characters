@@ -11,7 +11,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-    <ProjectReference Include="..\..\..\Kalantyr\Kalantyr.Libs\Kalantyr.Web\Kalantyr.Web.csproj" />
     <ProjectReference Include="..\Relax.Characters.Models\Relax.Characters.Models.csproj" />
   </ItemGroup>
 
