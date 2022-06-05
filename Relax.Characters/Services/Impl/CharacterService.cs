@@ -46,7 +46,10 @@ namespace Relax.Characters.Services.Impl
             {
                 Id = characterId,
                 Name = record.Name,
-                Level = record.Level
+                Level = record.Level,
+
+                LocationId = 1, // TODO
+                Position = new (0, 0) // TODO
             };
             return new ResultDto<CharacterInfo> { Result = characterInfo };
         }
