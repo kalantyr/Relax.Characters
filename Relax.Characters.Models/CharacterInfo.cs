@@ -1,6 +1,9 @@
-﻿namespace Relax.Characters.Models
+﻿using Kalavarda.Primitives.Abstract;
+using Kalavarda.Primitives.Geometry;
+
+namespace Relax.Characters.Models
 {
-    public class CharacterInfo
+    public class CharacterInfo: IHasPosition
     {
         public uint Id { get; set; }
 
@@ -10,6 +13,6 @@
 
         public uint LocationId { get; set; }
 
-        public (float, float) Position { get; set; }
+        public PointF Position { get; set; }
     }
 }
